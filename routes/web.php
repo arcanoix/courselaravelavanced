@@ -12,5 +12,36 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'Home';
+});
+
+
+Route::get('/usuarios', function(){
+    return 'Usuarios';
+});
+
+
+
+
+Route::get('/usuarios/{id}', function($id){
+    return "Mostrando detalle del usuario: {$id}";
+})->where('id', '[0-9]+');
+
+
+Route::get('/usuarios/nuevo', function(){
+    return "creando nuevo usuario";
+});
+
+
+Route::get('/saludo/{name}/{nickname}', function($name, $nick = null){
+
+    $name = ucfirst($name); // cambiar la primera letra en mayuscula
+
+    if($nick){
+        return "Bienvenido {$name}, tu apodo es {$nick}";
+    }else{
+        return "Bienvenido {$name}";
+    }
+
+    
 });
